@@ -1,0 +1,48 @@
+{
+  "name": "chromecast",
+  "version": "0.1.1",
+  "description": "This pluging allow you to control chromecast",
+  "main": "index.js",
+  "netbeast": {
+    "bootOnLoad": true,
+    "type": "plugin"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.0",
+    "chai": "^3.2.0",
+    "chromecast-js": "^0.1.7",
+    "commander": "^2.8.1",
+    "express": "^4.13.3",
+    "fs": "0.0.2",
+    "http": "0.0.0",
+    "mdns": "^2.3.0",
+    "mocha": "^2.3.2",
+    "morgan": "^1.6.1",
+    "netbeast": "^1.0.1",
+    "path": "^0.12.7",
+    "request": "^2.62.0",
+    "socket.io": "^1.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/netbeast/chromecast"
+  },
+  "keywords": [
+    "iot",
+    "netbeast",
+    "plugin",
+    "chromecast"
+  ],
+  "author": "pablo@netbeast.co",
+  "license": "GPL 3",
+  "bugs": {
+    "url": "https://github.com/netbeast/chromecast/issues"
+  },
+  "homepage": "netbeast.co"
+}
