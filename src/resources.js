@@ -9,7 +9,7 @@ var devices = []
 module.exports = function (callback) {
   var objects = []
   // Request to the database
-  request.get(process.env.LOCAL_URL + '/api/resources?app=chromecast',
+  request.get('http://' + process.env.NETBEAST + '/api/resources?app=chromecast',
   function (err, resp, body) {
     if (err) return callback(err, null)
     if (!body) return callback()
@@ -35,7 +35,7 @@ module.exports = function (callback) {
       } else {
         //  Use this block to register the found device on the netbeast database
         //  in order to using it later
-        request.post({url: process.env.LOCAL_URL + '/api/resources',
+        request.post({url: 'http://' + process.env.NETBEAST + '/api/resources',
         json: {
           app: 'chromecast',
           location: 'none',
@@ -54,7 +54,7 @@ module.exports = function (callback) {
     if (objects.length > 0) {
       objects.forEach(function (hooks) {
         //  Use this block to delete a device from the netbeast database
-        request.del(process.env.LOCAL_URL + '/api/resources?hook=' + hooks,
+        request.del('http://' + process.env.NETBEAST + '/api/resources?hook=' + hooks,
         function (err, resp, body) {
           if (err) return callback(err) // this might produce unwanted results...
         })

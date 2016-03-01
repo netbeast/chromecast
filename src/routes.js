@@ -3,6 +3,8 @@ var router = express.Router()
 var mqtt = require('mqtt')
 var async = require('async')
 
+var client = mqtt.connect('ws://' + process.env.NETBEAST)
+
 // Require the discovery function
 var loadResources = require('./resources')
 
@@ -11,7 +13,7 @@ var values = {status: '', volume: '', track: ''}
 var lastTrack
 
 loadResources(function (err, devices) {
-  if (err) return console.log(err)
+  if (err) return console.log(new Error(err))
   if (!devices || devices.length < 1) return false
 
   router.get('/chromecast/:id', function (req, res, next) {
@@ -163,7 +165,6 @@ loadResources(function (err, devices) {
         }
       }], function (err, results) {
         if (err) return res.status(500).send(err)
-        var client = mqtt.connect()
         client.publish('netbeast/video', JSON.stringify(response))
         return res.send(response)
       })
