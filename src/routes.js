@@ -12,9 +12,13 @@ var values = {status: '', volume: '', track: ''}
 
 var lastTrack
 
-loadResources(function (err, devices) {
+var devices = []
+
+loadResources(function (err, items) {
   if (err) return console.log(new Error(err))
-  if (!devices || devices.length < 1) return false
+
+  if (!devices) return false
+  devices = items
 
   router.get('/chromecast/:id', function (req, res, next) {
     var device = devices.filter(function (elem) {
@@ -73,9 +77,7 @@ loadResources(function (err, devices) {
     var device = devices.filter(function (elem) {
       if (elem.config.addresses[0] === req.params.id) return true
     })[0]
-
     if (device.length < 1) return res.status(404).send('Device not found')
-
     var response = {}
     var connected = false
 
