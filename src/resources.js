@@ -1,5 +1,4 @@
 var request = require('request')
-
 var chromecastjs = require('chromecast-js')
 
 var browser = new chromecastjs.Browser()

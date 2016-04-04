@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var mqtt = require('mqtt')
 var async = require('async')
+var netbeast = require('neteast')
 
 var client = mqtt.connect('ws://' + process.env.NETBEAST)
 
@@ -15,7 +16,10 @@ var lastTrack
 var devices = []
 
 loadResources(function (err, items) {
-  if (err) return console.log(new Error(err))
+  if (err) {
+    console.trace(new Error(err))
+    netbeast().error(err, 'Something wrong!')
+  }
 
   if (!devices) return false
   devices = items
