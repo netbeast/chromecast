@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 var mqtt = require('mqtt')
 var async = require('async')
-var netbeast = require('neteast')
+var netbeast = require('netbeast')
 
 var client = mqtt.connect('ws://' + process.env.NETBEAST)
 
